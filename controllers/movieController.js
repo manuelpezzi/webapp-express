@@ -10,12 +10,12 @@ function index(req, res) {
             });
 
         //res.json(results);
-        const movies = results.map((movie) => {
-            console.log('req.imagePath:', req.imagePath); // Log per verificare req.imagePath
-            console.log('movie.image:', movie.image); // Log per verificare il campo image
+
+        const movies = results.map(movie => {
+
             return {
                 ...movie,
-                image: req.imagePath + movie.image,
+                image: req.imagePath + movie.image
             }
         });
         res.json(movies);
@@ -55,6 +55,7 @@ function show(req, res) {
                 ...movie,
                 image: req.imagePath + movie.image,
             });
+
 
         });
 
