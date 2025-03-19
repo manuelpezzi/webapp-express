@@ -102,4 +102,26 @@ function storeReview(req, res) {
         });
     });
 }
-export { index, show, destroy, storeReview };
+
+function store(req, res,) {
+    const { title, director, genre, release_year, abstract } = req.body
+
+    const imageName = `${req.file.filename}`
+
+    const sql = "INSERT INTO movies (title, director, genre, release_year, abstract,image ) VALUES (?,?,?,?,?,?)"
+
+    connection.query(sql[title, director, imageName, genre, release_year, abstract], (err, results) => {
+        if (err) return res.status(500).json({
+            error: 'Database Errore Store'
+        })
+
+        res.status(201).json({
+            status: "success",
+            message: "Movie Add Success",
+            id: results.insertId
+        }
+        )
+    })
+}
+
+export { index, show, destroy, storeReview, store };
